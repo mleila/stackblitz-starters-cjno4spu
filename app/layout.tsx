@@ -5,6 +5,7 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://lawbrothers.com'),
   title: 'Law Brothers - Award-Winning Personal Injury Attorneys',
   description: 'Led by Shawn and Shervin Lalezary, the Law Brothers represent the injured and have recovered more than $500 Million for their clients. Personal injury attorneys with offices throughout California, Texas, and the West Coast.',
   keywords: ['personal injury', 'attorneys', 'law brothers', 'Shawn Lalezary', 'Shervin Lalezary', 'California lawyers', 'car accident', 'vehicle accident', 'product liability'],
