@@ -41,27 +41,29 @@ export default function Home() {
   ];
 
   return (
-    <main className="bg-background text-foreground overflow-x-hidden">
+    <main className="bg-gray-50 text-gray-900 overflow-x-hidden">
       {/* Animated Hero Section */}
-      <section className="relative min-h-screen flex items-center bg-gradient-to-br from-background via-background to-background/95">
+      <section className="relative min-h-screen flex items-center bg-gradient-to-br from-primary-50 via-white to-secondary-50">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-primary/10 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary-200 rounded-full blur-3xl animate-pulse opacity-30"></div>
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary-200 rounded-full blur-3xl animate-pulse opacity-30" style={{ animationDelay: '2s' }}></div>
         </div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className={`text-center transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-6 animate-bounce">
+            <div className="inline-flex items-center gap-2 bg-accent-100 text-accent-900 px-4 py-2 rounded-full text-sm font-medium mb-6 animate-bounce">
               <Zap className="w-4 h-4" />
               <span>24/7 Emergency Legal Help Available</span>
             </div>
             
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-              Injured in a Motor
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
+              <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                Injured in a Motor
+              </span>
               <span className="block text-primary animate-pulse">Vehicle Accident?</span>
             </h1>
             
-            <p className="text-xl sm:text-2xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl sm:text-2xl text-gray-600 mb-10 max-w-3xl mx-auto leading-relaxed">
               Get the compensation you deserve. Our award-winning attorneys have recovered over <span className="text-primary font-semibold">$500 million</span> for accident victims.
             </p>
             
@@ -71,12 +73,12 @@ export default function Home() {
                   Get Free Case Review
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary to-primary/80 transition-transform duration-300 group-hover:scale-110"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-primary-500 transition-transform duration-300 group-hover:scale-110"></div>
               </button>
               
               <a
                 href="tel:1-800-LAW-HELP"
-                className="group px-8 py-4 border-2 border-border rounded-full font-semibold text-lg flex items-center justify-center gap-2 transition-all duration-300 hover:bg-accent hover:border-accent hover:scale-105"
+                className="group px-8 py-4 border-2 border-gray-300 rounded-full font-semibold text-lg flex items-center justify-center gap-2 transition-all duration-300 hover:bg-accent-50 hover:border-accent-300 hover:scale-105"
               >
                 <Phone className="h-5 w-5 animate-pulse" />
                 <span>Call: 1-800-LAW-HELP</span>
@@ -87,13 +89,13 @@ export default function Home() {
         
         {/* Animated scroll indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <ChevronRight className="w-6 h-6 rotate-90 text-muted-foreground" />
+          <ChevronRight className="w-6 h-6 rotate-90 text-gray-400" />
         </div>
       </section>
 
       {/* Animated Stats Section */}
-      <section className="py-20 bg-card relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-background to-transparent opacity-50"></div>
+      <section className="py-20 bg-white relative border-y border-gray-100">
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-transparent opacity-50"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -102,10 +104,10 @@ export default function Home() {
                 className="text-center transform transition-all duration-700 hover:scale-110"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+                <div className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent">
                   {stat.prefix}{stat.value}{stat.suffix}
                 </div>
-                <div className="text-muted-foreground mt-2 font-medium">{stat.label}</div>
+                <div className="text-gray-600 mt-2 font-medium">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -113,38 +115,40 @@ export default function Home() {
       </section>
 
       {/* Services with Hover Effects */}
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-              We Handle All Types of Accidents
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+                We Handle All Types of Accidents
+              </span>
             </h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               No matter how you were injured, we have the expertise to fight for your rights
             </p>
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { icon: Car, title: "Car Accidents", description: "From fender benders to major collisions", color: "from-blue-500/20 to-blue-600/20" },
-              { icon: AlertTriangle, title: "Truck Accidents", description: "Commercial truck and 18-wheeler accidents", color: "from-red-500/20 to-red-600/20" },
-              { icon: Users, title: "Pedestrian Accidents", description: "Protecting pedestrians injured by vehicles", color: "from-green-500/20 to-green-600/20" },
-              { icon: Shield, title: "Motorcycle Accidents", description: "Specialized representation for riders", color: "from-purple-500/20 to-purple-600/20" },
-              { icon: FileText, title: "Hit and Run", description: "Finding justice when drivers flee", color: "from-yellow-500/20 to-yellow-600/20" },
-              { icon: Scale, title: "Wrongful Death", description: "Compassionate support for families", color: "from-pink-500/20 to-pink-600/20" }
+              { icon: Car, title: "Car Accidents", description: "From fender benders to major collisions", colorClass: "from-primary-100 to-primary-200" },
+              { icon: AlertTriangle, title: "Truck Accidents", description: "Commercial truck and 18-wheeler accidents", colorClass: "from-secondary-100 to-secondary-200" },
+              { icon: Users, title: "Pedestrian Accidents", description: "Protecting pedestrians injured by vehicles", colorClass: "from-accent-100 to-accent-200" },
+              { icon: Shield, title: "Motorcycle Accidents", description: "Specialized representation for riders", colorClass: "from-primary-100 to-primary-200" },
+              { icon: FileText, title: "Hit and Run", description: "Finding justice when drivers flee", colorClass: "from-secondary-100 to-secondary-200" },
+              { icon: Scale, title: "Wrongful Death", description: "Compassionate support for families", colorClass: "from-accent-100 to-accent-200" }
             ].map((service, index) => (
               <div
                 key={index}
-                className="group relative bg-card rounded-2xl p-8 transition-all duration-500 hover:scale-105 hover:shadow-2xl overflow-hidden"
+                className="group relative bg-white rounded-2xl p-8 transition-all duration-500 hover:scale-105 hover:shadow-2xl overflow-hidden border border-gray-100"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                <div className={`absolute inset-0 bg-gradient-to-br ${service.colorClass} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
                 <div className="relative z-10">
-                  <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <service.icon className="h-7 w-7 text-primary" />
+                  <div className="w-14 h-14 bg-primary-100 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    <service.icon className="h-7 w-7 text-primary-600" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
-                  <p className="text-muted-foreground">{service.description}</p>
+                  <h3 className="text-xl font-semibold mb-3 text-gray-900">{service.title}</h3>
+                  <p className="text-gray-600">{service.description}</p>
                 </div>
               </div>
             ))}
@@ -153,13 +157,13 @@ export default function Home() {
       </section>
 
       {/* Testimonials Carousel */}
-      <section className="py-20 bg-card">
+      <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">What Our Clients Say</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">What Our Clients Say</h2>
             <div className="flex justify-center gap-1 mb-8">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-6 h-6 fill-primary text-primary" />
+                <Star key={i} className="w-6 h-6 fill-primary-500 text-primary-500" />
               ))}
             </div>
           </div>
@@ -177,10 +181,10 @@ export default function Home() {
                 }`}
               >
                 <blockquote className="text-center">
-                  <p className="text-xl sm:text-2xl text-muted-foreground mb-4 italic">
+                  <p className="text-xl sm:text-2xl text-gray-600 mb-4 italic">
                     "{testimonial.text}"
                   </p>
-                  <cite className="text-lg font-semibold not-italic">{testimonial.author}</cite>
+                  <cite className="text-lg font-semibold not-italic text-gray-900">{testimonial.author}</cite>
                 </blockquote>
               </div>
             ))}
@@ -192,7 +196,7 @@ export default function Home() {
                 key={index}
                 onClick={() => setActiveTestimonial(index)}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === activeTestimonial ? 'w-8 bg-primary' : 'bg-muted'
+                  index === activeTestimonial ? 'w-8 bg-primary' : 'bg-gray-300'
                 }`}
               />
             ))}
@@ -201,17 +205,17 @@ export default function Home() {
       </section>
 
       {/* Interactive Process Timeline */}
-      <section className="py-24 bg-background">
+      <section className="py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
+            <h2 className="text-4xl sm:text-5xl font-bold mb-4 text-gray-900">
               Your Path to Justice
             </h2>
-            <p className="text-xl text-muted-foreground">Simple, transparent, and effective</p>
+            <p className="text-xl text-gray-600">Simple, transparent, and effective</p>
           </div>
           
           <div className="relative">
-            <div className="absolute top-1/2 left-0 right-0 h-1 bg-border transform -translate-y-1/2 hidden md:block"></div>
+            <div className="absolute top-1/2 left-0 right-0 h-1 bg-gray-200 transform -translate-y-1/2 hidden md:block"></div>
             <div className="grid md:grid-cols-4 gap-8 relative">
               {[
                 { icon: Phone, title: "Free Consultation", description: "Call us anytime for immediate help" },
@@ -220,12 +224,12 @@ export default function Home() {
                 { icon: Award, title: "Get Results", description: "Receive the settlement you deserve" }
               ].map((step, index) => (
                 <div key={index} className="relative group">
-                  <div className="bg-card rounded-2xl p-6 text-center transition-all duration-500 hover:scale-105 hover:shadow-xl">
+                  <div className="bg-white rounded-2xl p-6 text-center transition-all duration-500 hover:scale-105 hover:shadow-xl border border-gray-100">
                     <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 group-hover:animate-bounce">
                       <step.icon className="w-8 h-8" />
                     </div>
-                    <h3 className="text-lg font-semibold mb-2">{step.title}</h3>
-                    <p className="text-sm text-muted-foreground">{step.description}</p>
+                    <h3 className="text-lg font-semibold mb-2 text-gray-900">{step.title}</h3>
+                    <p className="text-sm text-gray-600">{step.description}</p>
                   </div>
                 </div>
               ))}
@@ -235,47 +239,49 @@ export default function Home() {
       </section>
 
       {/* Enhanced CTA Section */}
-      <section id="contact" className="py-24 bg-gradient-to-br from-primary/10 via-background to-primary/5 relative overflow-hidden">
+      <section id="contact" className="py-24 bg-gradient-to-br from-primary-50 via-white to-secondary-50 relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-0 right-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
+          <div className="absolute top-0 right-0 w-96 h-96 bg-primary-200 rounded-full blur-3xl animate-pulse opacity-20"></div>
+          <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary-200 rounded-full blur-3xl animate-pulse opacity-20" style={{ animationDelay: '2s' }}></div>
         </div>
         
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-            Start Your Free Case Review Now
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+            <span className="bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent">
+              Start Your Free Case Review Now
+            </span>
           </h2>
-          <p className="text-xl text-muted-foreground mb-10">
+          <p className="text-xl text-gray-600 mb-10">
             Don't wait - statutes of limitations apply. Get help today.
           </p>
           
-          <div className="bg-card backdrop-blur-sm rounded-3xl p-8 sm:p-12 shadow-2xl border border-border/50">
+          <div className="bg-white backdrop-blur-sm rounded-3xl p-8 sm:p-12 shadow-2xl border border-gray-200">
             <form className="space-y-6">
               <div className="grid sm:grid-cols-2 gap-6">
                 <div className="group">
                   <input
                     type="text"
                     placeholder="Your Name"
-                    className="w-full px-6 py-4 bg-background border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 placeholder:text-muted-foreground"
+                    className="w-full px-6 py-4 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 placeholder:text-gray-400"
                   />
                 </div>
                 <div className="group">
                   <input
                     type="tel"
                     placeholder="Phone Number"
-                    className="w-full px-6 py-4 bg-background border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 placeholder:text-muted-foreground"
+                    className="w-full px-6 py-4 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 placeholder:text-gray-400"
                   />
                 </div>
               </div>
               <input
                 type="email"
                 placeholder="Email Address"
-                className="w-full px-6 py-4 bg-background border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 placeholder:text-muted-foreground"
+                className="w-full px-6 py-4 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 placeholder:text-gray-400"
               />
               <textarea
                 placeholder="Brief description of your accident"
                 rows={4}
-                className="w-full px-6 py-4 bg-background border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 placeholder:text-muted-foreground resize-none"
+                className="w-full px-6 py-4 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 placeholder:text-gray-400 resize-none"
               />
               <button
                 type="submit"
@@ -285,18 +291,18 @@ export default function Home() {
                   Submit for Free Review
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-2" />
                 </span>
-                <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary to-primary/80 transition-transform duration-500 group-hover:scale-110"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600 transition-transform duration-500 group-hover:scale-110"></div>
               </button>
             </form>
             
-            <div className="mt-8 flex items-center justify-center gap-2 text-muted-foreground">
+            <div className="mt-8 flex items-center justify-center gap-2 text-gray-600">
               <Shield className="w-5 h-5" />
               <span className="text-sm">100% Confidential • No Obligation • No Fees Unless We Win</span>
             </div>
           </div>
           
           <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <p className="text-muted-foreground">Prefer to talk? Call us now:</p>
+            <p className="text-gray-600">Prefer to talk? Call us now:</p>
             <a
               href="tel:1-800-LAW-HELP"
               className="inline-flex items-center gap-2 text-2xl font-bold text-primary hover:underline transition-all duration-300 hover:scale-105"
@@ -309,28 +315,28 @@ export default function Home() {
       </section>
 
       {/* Modern Footer */}
-      <footer className="bg-card border-t border-border py-16">
+      <footer className="bg-gray-900 text-white py-16 border-t border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h3 className="text-2xl font-bold mb-4">Law Borther</h3>
-            <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
               Fighting for accident victims' rights for over 25 years. Available 24/7 for emergency consultations.
             </p>
             <div className="flex justify-center gap-8 mb-8">
               <div className="flex items-center gap-2">
-                <Award className="w-5 h-5 text-primary" />
-                <span className="text-sm">Top Rated Firm</span>
+                <Award className="w-5 h-5 text-primary-400" />
+                <span className="text-sm text-gray-300">Top Rated Firm</span>
               </div>
               <div className="flex items-center gap-2">
-                <Shield className="w-5 h-5 text-primary" />
-                <span className="text-sm">Millions Recovered</span>
+                <Shield className="w-5 h-5 text-primary-400" />
+                <span className="text-sm text-gray-300">Millions Recovered</span>
               </div>
               <div className="flex items-center gap-2">
-                <Clock className="w-5 h-5 text-primary" />
-                <span className="text-sm">24/7 Available</span>
+                <Clock className="w-5 h-5 text-primary-400" />
+                <span className="text-sm text-gray-300">24/7 Available</span>
               </div>
             </div>
-            <p className="text-xs text-muted-foreground">
+            <p className="text-xs text-gray-500">
               © 2024 Law Borther. All rights reserved. | Attorney Advertising | Past results do not guarantee future outcomes.
             </p>
           </div>
@@ -345,10 +351,6 @@ export default function Home() {
         
         .animate-float {
           animation: float 3s ease-in-out infinite;
-        }
-        
-        .animation-delay-2000 {
-          animation-delay: 2s;
         }
       `}</style>
     </main>
