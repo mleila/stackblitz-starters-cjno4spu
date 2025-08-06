@@ -2,7 +2,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-neutral-50">
       {/* Header */}
-      <header className="bg-primary-900 text-white py-4">
+      <header className="bg-primary-900 text-neutral-50 py-4">
         <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
           <div className="text-2xl font-bold">Law Brothers</div>
           <div className="text-secondary-400 font-semibold">
@@ -12,7 +12,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="bg-primary-800 text-white py-20">
+      <section className="bg-primary-800 text-neutral-50 py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             Award-Winning Personal Injury Attorneys
@@ -34,7 +34,7 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             <div className="p-6">
@@ -74,11 +74,11 @@ export default function Home() {
                 With offices throughout California, Texas, and the West Coast, the Law Brothers employ a team of skilled 
                 professionals and work with trusted medical experts and accident reconstruction specialists.
               </p>
-              <button className="bg-accent-600 hover:bg-accent-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+              <button className="bg-accent-600 hover:bg-accent-700 text-neutral-50 font-bold py-3 px-6 rounded-lg transition-colors">
                 Learn More About Us
               </button>
             </div>
-            <div className="bg-white p-8 rounded-lg shadow-lg">
+            <div className="bg-neutral-50 p-8 rounded-lg shadow-lg">
               <h3 className="text-2xl font-bold text-primary-800 mb-4">Why Choose Law Brothers?</h3>
               <ul className="space-y-4">
                 <li className="flex items-start">
@@ -104,7 +104,7 @@ export default function Home() {
       </section>
 
       {/* Practice Areas */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-primary-900 mb-4">Our Practice Areas</h2>
@@ -122,7 +122,7 @@ export default function Home() {
               { title: 'Slip and Fall', desc: 'Premises liability cases involving dangerous property conditions' },
               { title: 'Medical Malpractice', desc: 'Healthcare provider negligence and medical error cases' }
             ].map((service, index) => (
-              <div key={index} className="bg-neutral-50 p-6 rounded-lg border border-neutral-200 hover:shadow-lg transition-shadow">
+              <div key={index} className="bg-neutral-100 p-6 rounded-lg border border-neutral-200 hover:shadow-lg transition-shadow">
                 <h3 className="text-xl font-semibold text-primary-800 mb-3">{service.title}</h3>
                 <p className="text-neutral-600 mb-4">{service.desc}</p>
                 <button className="text-accent-600 hover:text-accent-700 font-medium transition-colors">
@@ -137,7 +137,7 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-16 bg-primary-900">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-neutral-50 mb-4">
             Ready to Fight for Your Rights?
           </h2>
           <p className="text-xl text-primary-200 mb-8 max-w-3xl mx-auto">
@@ -160,7 +160,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2">
-              <h3 className="text-2xl font-bold text-white mb-4">Law Brothers</h3>
+              <h3 className="text-2xl font-bold text-neutral-50 mb-4">Law Brothers</h3>
               <p className="text-neutral-400 mb-4 max-w-md">
                 Award-winning personal injury attorneys serving clients across California, Texas, and the West Coast. 
                 Over $500 million recovered for our clients.
@@ -171,7 +171,7 @@ export default function Home() {
             </div>
             
             <div>
-              <h4 className="text-lg font-semibold text-white mb-4">Practice Areas</h4>
+              <h4 className="text-lg font-semibold text-neutral-50 mb-4">Practice Areas</h4>
               <ul className="space-y-2">
                 <li><a href="#" className="hover:text-secondary-400 transition-colors">Personal Injury</a></li>
                 <li><a href="#" className="hover:text-secondary-400 transition-colors">Vehicle Accidents</a></li>
@@ -181,9 +181,9 @@ export default function Home() {
             </div>
             
             <div>
-              <h4 className="text-lg font-semibold text-white mb-4">Contact</h4>
+              <h4 className="text-lg font-semibold text-neutral-50 mb-4">Contact</h4>
               <div className="space-y-2">
-                <div className="text-white font-medium">Beverly Hills Office:</div>
+                <div className="text-neutral-50 font-medium">Beverly Hills Office:</div>
                 <div>8370 Wilshire Blvd #205</div>
                 <div>Beverly Hills, CA 90211</div>
                 <div className="text-secondary-400 font-bold text-lg pt-2">(800) 222-2222</div>
