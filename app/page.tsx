@@ -2,10 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import { Phone, Shield, Check, Clock, Car, Scale, AlertTriangle, ArrowRight, Users, Award, FileText, HeartHandshake, Star, TrendingUp, Zap, ChevronRight } from 'lucide-react';
+import { submitFormPayload } from './actions';
 
-export default function Home() {
+export default function LandingPage() {
   const [isVisible, setIsVisible] = useState(false);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   useEffect(() => {
     setIsVisible(true);
@@ -14,6 +17,38 @@ export default function Home() {
     }, 5000);
     return () => clearInterval(interval);
   }, []);
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    const formData = new FormData(event.currentTarget);
+    const payload = {
+      name: formData.get('name') as string,
+      phone: formData.get('phone') as string,
+      email: formData.get('email') as string,
+      description: formData.get('description') as string,
+      timestamp: new Date().toISOString(),
+    };
+
+    try {
+      const { error } = await submitFormPayload({ payload });
+      
+      if (error) {
+        console.error('Form submission error:', error);
+        setSubmitStatus('error');
+      } else {
+        setSubmitStatus('success');
+        (event.target as HTMLFormElement).reset();
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   const stats = [
     { value: 500, suffix: 'M+', label: 'Recovered for Clients', prefix: '$' },
@@ -256,40 +291,63 @@ export default function Home() {
           </p>
           
           <div className="bg-white backdrop-blur-sm rounded-3xl p-8 sm:p-12 shadow-2xl border border-gray-200">
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid sm:grid-cols-2 gap-6">
                 <div className="group">
                   <input
                     type="text"
+                    name="name"
                     placeholder="Your Name"
+                    required
                     className="w-full px-6 py-4 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 placeholder:text-gray-400"
                   />
                 </div>
                 <div className="group">
                   <input
                     type="tel"
+                    name="phone"
                     placeholder="Phone Number"
+                    required
                     className="w-full px-6 py-4 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 placeholder:text-gray-400"
                   />
                 </div>
               </div>
               <input
                 type="email"
+                name="email"
                 placeholder="Email Address"
+                required
                 className="w-full px-6 py-4 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 placeholder:text-gray-400"
               />
               <textarea
+                name="description"
                 placeholder="Brief description of your accident"
                 rows={4}
+                required
                 className="w-full px-6 py-4 bg-gray-50 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 placeholder:text-gray-400 resize-none"
               />
+              
+              {submitStatus === 'success' && (
+                <div className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-xl flex items-center gap-2">
+                  <Check className="w-5 h-5" />
+                  <span>Thank you! We'll contact you within 24 hours.</span>
+                </div>
+              )}
+              
+              {submitStatus === 'error' && (
+                <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-xl">
+                  <span>Something went wrong. Please try again or call us directly.</span>
+                </div>
+              )}
+              
               <button
                 type="submit"
-                className="group relative w-full sm:w-auto px-12 py-5 bg-primary text-primary-foreground rounded-full font-bold text-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+                disabled={isSubmitting}
+                className="group relative w-full sm:w-auto px-12 py-5 bg-primary text-primary-foreground rounded-full font-bold text-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
                 <span className="relative z-10 flex items-center justify-center">
-                  Submit for Free Review
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-2" />
+                  {isSubmitting ? 'Submitting...' : 'Submit for Free Review'}
+                  {!isSubmitting && <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-2" />}
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600 transition-transform duration-500 group-hover:scale-110"></div>
               </button>
