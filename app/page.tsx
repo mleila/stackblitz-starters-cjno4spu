@@ -1,391 +1,359 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import { Car, Phone, Mail, Shield, Clock, CheckCircle, Star, MapPin, AlertCircle, ArrowRight, Users, Award, DollarSign } from 'lucide-react'
+import React, { useState } from 'react';
+import { Phone, Car, Shield, Users, Star, CircleCheck, ArrowRight } from 'lucide-react';
 
-export default function MotorVehicleAccidentLandingPage() {
+export default function Page() {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     email: '',
     phone: '',
-    message: ''
-  })
+    caseDescription: ''
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log('Form submitted:', formData)
-    // Reset form
-    setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      message: ''
-    })
-    alert('Thank you for your submission. We will contact you within 24 hours.')
-  }
+    e.preventDefault();
+    console.log('Form submitted:', formData);
+    // Form handler will be connected to backend later
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
   return (
-    <main className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="relative bg-foreground text-background">
-        <div className="container mx-auto px-4 py-20">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-background/10 rounded-full px-4 py-2 mb-6">
-              <Phone className="w-4 h-4" />
-              <span className="text-sm font-medium">Available 24/7</span>
-            </div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
-              INJURED IN A CAR ACCIDENT?
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-background/90">
-              Call The Law Brothers®! Over $500,000,000 Recovered For Our Clients
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="tel:8002222222"
-                className="inline-flex items-center justify-center gap-2 bg-background text-foreground px-8 py-4 rounded-lg font-semibold text-lg hover:bg-background/90 transition-colors"
-              >
-                <Phone className="w-5 h-5" />
-                (800) 222-2222
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <header className="bg-blue-900 text-white py-4 sticky top-0 z-50">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center">
+            <div className="text-2xl font-bold">Law Brothers®</div>
+            <div className="flex items-center space-x-4">
+              <span className="text-sm">Available 24/7 • Hablamos Español</span>
+              <a href="tel:8002222222" className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg font-bold transition-colors flex items-center space-x-2">
+                <Phone size={20} />
+                <span>(800) 222-2222</span>
               </a>
-              <button
-                onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
-                className="inline-flex items-center justify-center gap-2 border-2 border-background text-background px-8 py-4 rounded-lg font-semibold text-lg hover:bg-background hover:text-foreground transition-colors"
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700 text-white py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h1 className="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                INJURED IN A
+                <span className="text-red-500"> CAR ACCIDENT?</span>
+              </h1>
+              <h2 className="text-3xl lg:text-4xl font-bold mb-6 text-yellow-400">
+                CALL THE LAW BROTHERS!
+              </h2>
+              <p className="text-xl mb-8 leading-relaxed">
+                Over <strong className="text-yellow-400">$500,000,000</strong> recovered for our clients. 
+                Award-winning personal injury attorneys fighting for maximum compensation.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                <div className="flex items-center space-x-3 bg-white/10 rounded-lg p-4">
+                  <CircleCheck className="text-green-400" size={24} />
+                  <span className="font-semibold">No Fee Unless You Win</span>
+                </div>
+                <div className="flex items-center space-x-3 bg-white/10 rounded-lg p-4">
+                  <Car className="text-blue-400" size={24} />
+                  <span className="font-semibold">We'll Come To You</span>
+                </div>
+                <div className="flex items-center space-x-3 bg-white/10 rounded-lg p-4">
+                  <Phone className="text-green-400" size={24} />
+                  <span className="font-semibold">Free Consultation</span>
+                </div>
+              </div>
+              <a 
+                href="tel:8002222222" 
+                className="bg-red-600 hover:bg-red-700 text-white text-2xl font-bold py-4 px-8 rounded-lg transition-colors inline-flex items-center space-x-3 shadow-lg"
               >
-                Free Case Review
-                <ArrowRight className="w-5 h-5" />
-              </button>
+                <Phone size={28} />
+                <span>CALL NOW: (800) 222-2222</span>
+              </a>
+            </div>
+            
+            {/* Contact Form */}
+            <div className="bg-white rounded-xl shadow-2xl p-8 text-gray-800">
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold text-blue-900 mb-2">Free Case Review</h3>
+                <p className="text-gray-600">Over $500 Million Recovered</p>
+              </div>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-1">First Name *</label>
+                    <input
+                      type="text"
+                      name="firstName"
+                      required
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-1">Last Name *</label>
+                    <input
+                      type="text"
+                      name="lastName"
+                      required
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                      className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">Email *</label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">Phone Number *</label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    required
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">Describe Your Case</label>
+                  <textarea
+                    name="caseDescription"
+                    rows={4}
+                    value={formData.caseDescription}
+                    onChange={handleInputChange}
+                    className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                    placeholder="Tell us about your accident..."
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-6 rounded-lg transition-colors flex items-center justify-center space-x-2"
+                >
+                  <span>Free Case Review</span>
+                  <ArrowRight size={20} />
+                </button>
+              </form>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Trust Indicators */}
-      <section className="py-12 bg-muted">
+      {/* Why Choose Us Section */}
+      <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="flex justify-center mb-4">
-                <DollarSign className="w-12 h-12 text-primary" />
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">Why Choose The Law Brothers®?</h2>
+            <p className="text-xl text-gray-600">Led by Shawn and Shervin Lalezary, we treat our clients like family</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center p-6 bg-white rounded-lg shadow-lg">
+              <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Shield className="text-green-600" size={32} />
               </div>
-              <h3 className="text-2xl font-bold mb-2">$500M+</h3>
-              <p className="text-muted-foreground">Recovered for Clients</p>
+              <h3 className="text-xl font-bold text-gray-800 mb-2">Over $500M Recovered</h3>
+              <p className="text-gray-600">Proven track record of securing maximum compensation for our clients</p>
             </div>
-            <div className="text-center">
-              <div className="flex justify-center mb-4">
-                <Shield className="w-12 h-12 text-primary" />
+            
+            <div className="text-center p-6 bg-white rounded-lg shadow-lg">
+              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="text-blue-600" size={32} />
               </div>
-              <h3 className="text-2xl font-bold mb-2">No Fees</h3>
-              <p className="text-muted-foreground">Unless You Win</p>
+              <h3 className="text-xl font-bold text-gray-800 mb-2">Family-First Approach</h3>
+              <p className="text-gray-600">We treat every client like family with personalized attention</p>
             </div>
-            <div className="text-center">
-              <div className="flex justify-center mb-4">
-                <Clock className="w-12 h-12 text-primary" />
+            
+            <div className="text-center p-6 bg-white rounded-lg shadow-lg">
+              <div className="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Phone className="text-red-600" size={32} />
               </div>
-              <h3 className="text-2xl font-bold mb-2">24/7</h3>
-              <p className="text-muted-foreground">Available Support</p>
+              <h3 className="text-xl font-bold text-gray-800 mb-2">Available 24/7</h3>
+              <p className="text-gray-600">Round-the-clock support when you need us most</p>
             </div>
-            <div className="text-center">
-              <div className="flex justify-center mb-4">
-                <Award className="w-12 h-12 text-primary" />
+            
+            <div className="text-center p-6 bg-white rounded-lg shadow-lg">
+              <div className="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <CircleCheck className="text-yellow-600" size={32} />
               </div>
-              <h3 className="text-2xl font-bold mb-2">Award-Winning</h3>
-              <p className="text-muted-foreground">Personal Injury Attorneys</p>
+              <h3 className="text-xl font-bold text-gray-800 mb-2">No Win, No Fee</h3>
+              <p className="text-gray-600">You don't pay unless we successfully recover compensation</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="py-20">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">What We Do For You</h2>
-            <p className="text-lg text-muted-foreground">
-              Our experienced car accident attorneys handle everything from A to Z, so you can focus on recovery.
-            </p>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">Motor Vehicle Accident Types We Handle</h2>
+            <p className="text-xl text-gray-600">Comprehensive legal representation for all types of vehicle accidents</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="bg-card p-6 rounded-lg shadow-sm border">
-              <CheckCircle className="w-10 h-10 text-primary mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Handle Insurance Companies</h3>
-              <p className="text-muted-foreground">
-                No more stressful calls. We deal with insurance companies directly on your behalf.
-              </p>
-            </div>
-            <div className="bg-card p-6 rounded-lg shadow-sm border">
-              <CheckCircle className="w-10 h-10 text-primary mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Medical Bill Management</h3>
-              <p className="text-muted-foreground">
-                We help coordinate your medical care and handle bill negotiations.
-              </p>
-            </div>
-            <div className="bg-card p-6 rounded-lg shadow-sm border">
-              <CheckCircle className="w-10 h-10 text-primary mb-4" />
-              <h3 className="text-xl font-semibold mb-2">Maximize Compensation</h3>
-              <p className="text-muted-foreground">
-                We fight to get you the maximum settlement for your injuries and damages.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="py-20 bg-muted">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">How It Works</h2>
-            <p className="text-lg text-muted-foreground">
-              Getting started with The Law Brothers® is simple and free.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            <div className="text-center">
-              <div className="bg-primary text-primary-foreground w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
-                1
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              'Car Accidents',
+              'Motorcycle Accidents', 
+              'Truck Accidents',
+              'Bicycle Accidents',
+              'Pedestrian Accidents',
+              'Uber/Lyft Accidents'
+            ].map((service, index) => (
+              <div key={index} className="flex items-center space-x-4 p-6 border-2 border-gray-200 rounded-lg hover:border-blue-500 hover:shadow-lg transition-all">
+                <Car className="text-blue-600" size={32} />
+                <h3 className="text-xl font-semibold text-gray-800">{service}</h3>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Free Case Evaluation</h3>
-              <p className="text-muted-foreground">
-                Submit your information and find out if you qualify immediately.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="bg-primary text-primary-foreground w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
-                2
-              </div>
-              <h3 className="text-xl font-semibold mb-2">We Call You</h3>
-              <p className="text-muted-foreground">
-                Our specialists walk you through your case and collect all necessary information.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="bg-primary text-primary-foreground w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl font-bold">
-                3
-              </div>
-              <h3 className="text-xl font-semibold mb-2">We Get to Work</h3>
-              <p className="text-muted-foreground">
-                Our attorneys handle every step of your case. You don't pay until we win.
-              </p>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20">
+      <section className="py-16 bg-blue-50">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">What Our Clients Say</h2>
-            <p className="text-lg text-muted-foreground">
-              Real experiences from real clients who trusted The Law Brothers®.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="bg-card p-6 rounded-lg shadow-sm border">
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-primary text-primary" />
-                ))}
-              </div>
-              <p className="text-muted-foreground mb-4">
-                "I got into a severe car accident at the end of 2016 and they've been with me every step of the way. 
-                They have been responsive, helpful, and reassuring. I would definitely recommend!"
-              </p>
-              <p className="font-semibold">- Ivonne K.</p>
-            </div>
-            <div className="bg-card p-6 rounded-lg shadow-sm border">
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-primary text-primary" />
-                ))}
-              </div>
-              <p className="text-muted-foreground mb-4">
-                "This law firm is a team of miracle workers! My case manager gathered all the details from my accident 
-                within a week and kept me updated consistently to keep me at ease."
-              </p>
-              <p className="font-semibold">- Jason A.</p>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">What Our Clients Say</h2>
+            <div className="flex justify-center space-x-1 mb-4">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="text-yellow-500 fill-current" size={24} />
+              ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Contact Form Section */}
-      <section id="contact-form" className="py-20 bg-muted">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4">Get Your Free Case Evaluation</h2>
-              <p className="text-lg text-muted-foreground">
-                The initial consultation is free! All fields are required.
+          
+          <div className="grid lg:grid-cols-3 gap-8">
+            <div className="bg-white p-6 rounded-lg shadow-lg">
+              <div className="flex space-x-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="text-yellow-500 fill-current" size={16} />
+                ))}
+              </div>
+              <p className="text-gray-700 mb-4">
+                "They handled everything for me from car insurance questions to finding doctors. 
+                This firm went above and beyond and continued to follow up with me."
               </p>
+              <p className="font-semibold text-gray-800">- Jacqueline D.</p>
             </div>
-            <form onSubmit={handleSubmit} className="bg-card p-8 rounded-lg shadow-sm border">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium mb-2">
-                    First Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    required
-                    value={formData.firstName}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium mb-2">
-                    Last Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    required
-                    value={formData.lastName}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
-                </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow-lg">
+              <div className="flex space-x-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="text-yellow-500 fill-current" size={16} />
+                ))}
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    Email *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium mb-2">
-                    Phone *
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    required
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
-                </div>
+              <p className="text-gray-700 mb-4">
+                "They were able to get a settlement that replaced my motorcycle and found me physical therapy. 
+                They were always responsive to my texts, calls, and emails."
+              </p>
+              <p className="font-semibold text-gray-800">- Charles Mortensen</p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow-lg">
+              <div className="flex space-x-1 mb-4">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="text-yellow-500 fill-current" size={16} />
+                ))}
               </div>
-              <div className="mb-6">
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Tell us about your accident *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                  placeholder="Please describe your accident, injuries, and any other relevant details..."
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full bg-primary text-primary-foreground py-3 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
-              >
-                Get My Free Case Review
-              </button>
-            </form>
+              <p className="text-gray-700 mb-4">
+                "Once my case was settled I ended up getting more than I was expecting, which was amazing. 
+                I highly recommended this law firm to anyone that needs help."
+              </p>
+              <p className="font-semibold text-gray-800">- William Charlton</p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-foreground text-background">
+      <section className="py-16 bg-gradient-to-r from-red-600 to-red-700 text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold mb-4">Don't Wait - Call Now!</h2>
-          <p className="text-xl mb-8 text-background/90">
-            Time limits apply to car accident claims. Get your free consultation today.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="tel:8002222222"
-              className="inline-flex items-center justify-center gap-2 bg-background text-foreground px-8 py-4 rounded-lg font-semibold text-lg hover:bg-background/90 transition-colors"
+          <h2 className="text-4xl font-bold mb-4">Don't Wait - Get Help Today</h2>
+          <p className="text-xl mb-8">The sooner you call, the sooner we can start fighting for your rights</p>
+          
+          <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
+            <a 
+              href="tel:8002222222" 
+              className="bg-white text-red-600 hover:bg-gray-100 text-2xl font-bold py-4 px-8 rounded-lg transition-colors flex items-center space-x-3 shadow-lg"
             >
-              <Phone className="w-5 h-5" />
-              Call (800) 222-2222
+              <Phone size={28} />
+              <span>(800) 222-2222</span>
             </a>
-            <div className="flex items-center gap-2 text-background">
-              <Clock className="w-5 h-5" />
-              <span>Available 24/7 • Hablamos Español</span>
+            
+            <div className="text-center">
+              <p className="text-lg font-semibold mb-1">AVAILABLE 24/7</p>
+              <p className="text-sm">Hablamos Español</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="py-12 bg-muted">
+      <footer className="bg-gray-800 text-white py-12">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <div className="grid md:grid-cols-3 gap-8">
             <div>
-              <h3 className="font-bold text-lg mb-4">The Law Brothers®</h3>
-              <p className="text-muted-foreground mb-4">
-                Award-winning personal injury attorneys serving California, Texas, and Washington.
+              <h3 className="text-2xl font-bold mb-4">Law Brothers®</h3>
+              <p className="text-gray-300 mb-4">
+                Award-winning personal injury attorneys fighting for maximum compensation. 
+                Over $500 Million recovered for our clients.
               </p>
-              <div className="flex gap-2">
-                <Shield className="w-5 h-5 text-primary" />
-                <span className="text-sm">No Fee Unless You Win</span>
+              <p className="text-gray-300">
+                Led by Shawn and Shervin Lalezary
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
+              <div className="space-y-2">
+                <p className="flex items-center space-x-2">
+                  <Phone size={16} />
+                  <span>(800) 222-2222</span>
+                </p>
+                <p className="text-gray-300">Available 24/7</p>
+                <p className="text-gray-300">Hablamos Español</p>
               </div>
             </div>
+            
             <div>
-              <h3 className="font-bold text-lg mb-4">Practice Areas</h3>
-              <ul className="space-y-2 text-muted-foreground">
-                <li>Car Accidents</li>
-                <li>Motorcycle Accidents</li>
-                <li>Truck Accidents</li>
-                <li>Pedestrian Accidents</li>
-                <li>Wrongful Death</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="font-bold text-lg mb-4">Contact</h3>
-              <div className="space-y-2 text-muted-foreground">
-                <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4" />
-                  <a href="tel:8002222222" className="hover:text-foreground">(800) 222-2222</a>
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4" />
-                  <span>Multiple Locations</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4" />
-                  <span>Available 24/7</span>
-                </div>
-              </div>
+              <h4 className="text-lg font-semibold mb-4">Headquarters</h4>
+              <p className="text-gray-300">
+                8370 Wilshire Blvd #205<br />
+                Beverly Hills, CA 90211
+              </p>
+              <p className="text-sm text-gray-400 mt-4">
+                Proud Partner of The San Diego Padres
+              </p>
             </div>
           </div>
-          <div className="border-t pt-8 text-center text-sm text-muted-foreground">
-            <p>© 2024 The Law Brothers® Firm. All Rights Reserved.</p>
+          
+          <div className="border-t border-gray-700 mt-8 pt-8 text-center">
+            <p className="text-gray-400">
+              © 2025 The Law Brothers® Firm. All Rights Reserved.
+            </p>
           </div>
         </div>
       </footer>
-    </main>
-  )
+    </div>
+  );
 }
