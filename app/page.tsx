@@ -1,491 +1,584 @@
-'use client'
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 
-import { useState } from 'react'
-import { Phone, Shield, DollarSign, Clock, Car, Users, Star, CheckCircle, Menu, X } from 'lucide-react'
+export const metadata: Metadata = {
+  title: "The Law Brothers — California Car Accident Lawyers — Not at Fault? Free Case Evaluation",
+  description:
+    "Not at fault in a CA car crash? The Law Brothers fight insurance companies for maximum recovery. Free evaluation. No fees unless we win. 24/7 availability.",
+  openGraph: {
+    title: "The Law Brothers — California Car Accident Lawyers",
+    description:
+      "Not at fault in a CA car crash? Free evaluation. No fees unless we win. 24/7 availability.",
+    type: "website",
+  },
+};
 
-export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    const formData = new FormData(e.target as HTMLFormElement)
-    console.log('Form submitted:', Object.fromEntries(formData))
-    alert('Thank you! We will contact you shortly.')
-  }
-
+export default function Page() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
-      <header className="bg-white shadow-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <h1 className="text-2xl font-bold text-gray-900">Law Brothers®</h1>
-              </div>
-            </div>
-            
-            {/* Desktop Navigation */}
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                <a href="#services" className="text-gray-700 hover:text-blue-600 px-3 py-2">Services</a>
-                <a href="#about" className="text-gray-700 hover:text-blue-600 px-3 py-2">About</a>
-                <a href="#testimonials" className="text-gray-700 hover:text-blue-600 px-3 py-2">Reviews</a>
-                <a href="#contact" className="text-gray-700 hover:text-blue-600 px-3 py-2">Contact</a>
-              </div>
-            </div>
-
-            {/* Phone Number */}
-            <div className="hidden md:flex items-center">
-              <a href="tel:8002222222" className="bg-red-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-red-700 flex items-center">
-                <Phone className="w-4 h-4 mr-2" />
-                (800) 222-2222
-              </a>
-            </div>
-
-            {/* Mobile menu button */}
-            <div className="md:hidden">
-              <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-gray-700 hover:text-blue-600"
-              >
-                {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
-              <a href="#services" className="text-gray-700 hover:text-blue-600 block px-3 py-2">Services</a>
-              <a href="#about" className="text-gray-700 hover:text-blue-600 block px-3 py-2">About</a>
-              <a href="#testimonials" className="text-gray-700 hover:text-blue-600 block px-3 py-2">Reviews</a>
-              <a href="#contact" className="text-gray-700 hover:text-blue-600 block px-3 py-2">Contact</a>
-              <a href="tel:8002222222" className="bg-red-600 text-white px-3 py-2 rounded-md font-semibold hover:bg-red-700 flex items-center">
-                <Phone className="w-4 h-4 mr-2" />
-                (800) 222-2222
-              </a>
-            </div>
-          </div>
-        )}
-      </header>
-
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-gray-900 to-blue-900 text-white">
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: 'url("https://images.unsplash.com/photo-1556086744-7502d61b1af5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MjY5NzB8MHwxfHNlYXJjaHwzfHxjYXIlMjBhY2NpZGVudCUyMGxlZ2FsJTIwanVzdGljZSUyMGxhd3xlbnwwfHx8fDE3NTQ1OTM3MDd8MA&ixlib=rb-4.1.0&q=80&w=1080")'
-          }}
-        ></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-5xl md:text-7xl font-bold mb-6">
-              INJURED IN A 
-              <span className="text-red-500"> CAR ACCIDENT?</span>
-            </h2>
-            <p className="text-xl md:text-2xl mb-8 font-medium">
-              Call the Law Brothers! Over $500 Million Recovered for Our Clients
+    <main className="bg-white text-black">
+      {/* Hero */}
+      <section className="relative isolate min-h-[80vh] overflow-hidden">
+        <Image
+          src="https://images.unsplash.com/photo-1603600990248-3b0724285579?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MjY5NzB8MHwxfHNlYXJjaHw0fHxjYXIlMjBhY2NpZGVudCUyMGF0dG9ybmV5JTIwQ2FsaWZvcm5pYXxlbnwwfDB8fHwxNzU0NjA0NTM2fDA&ixlib=rb-4.1.0&q=80&w=1080"
+          alt="grayscale photo of cars on road"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+        {/* Overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80" />
+        <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 sm:py-32">
+          <div className="max-w-3xl">
+            <p className="mb-3 inline-block rounded-full border border-white/30 bg-black/30 px-3 py-1 text-xs font-medium tracking-wide text-white">
+              Se habla español
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <a 
-                href="tel:8002222222"
-                className="bg-red-600 text-white px-8 py-4 rounded-lg text-xl font-bold hover:bg-red-700 transition-colors flex items-center"
-              >
-                <Phone className="w-6 h-6 mr-3" />
-                CALL NOW: (800) 222-2222
-              </a>
-              <a 
-                href="#contact"
-                className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg text-xl font-bold hover:bg-white hover:text-gray-900 transition-colors"
-              >
-                Free Case Review
-              </a>
-            </div>
-            <p className="mt-4 text-lg">Available 24/7 • Hablamos Español</p>
-          </div>
-        </div>
-      </section>
+            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
+              California Car Accident Lawyers
+              <span className="block text-gray-200">No Fees Unless We Win</span>
+            </h1>
+            <p className="mt-5 max-w-2xl text-lg text-gray-100">
+              Not at fault in a car, truck, or motorcycle crash? Get a free, no‑obligation case evaluation. We’re available 24/7 and we’ll come to you anywhere in California.
+            </p>
 
-      {/* Key Benefits */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="bg-red-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <DollarSign className="w-8 h-8" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">No Fee Unless You Win</h3>
-              <p className="text-gray-600">You don't pay attorney fees unless we recover compensation for you.</p>
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <a
+                href="#free-eval"
+                className="rounded-md bg-white px-5 py-3 text-sm font-semibold text-black transition hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-white/60"
+                aria-label="Get Free Case Evaluation"
+              >
+                Get Free Case Evaluation
+              </a>
+              <a
+                href="tel:+18005551234"
+                className="rounded-md border border-white/40 bg-transparent px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/60"
+                aria-label="Call Now"
+              >
+                Call Now (24/7)
+              </a>
             </div>
-            <div className="text-center">
-              <div className="bg-blue-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-8 h-8" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Available 24/7</h3>
-              <p className="text-gray-600">Call us anytime, day or night. We're here when you need us most.</p>
-            </div>
-            <div className="text-center">
-              <div className="bg-green-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">We'll Come to You</h3>
-              <p className="text-gray-600">Can't come to our office? No problem. We'll meet you wherever is convenient.</p>
-            </div>
-            <div className="text-center">
-              <div className="bg-purple-600 text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="w-8 h-8" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Free Consultation</h3>
-              <p className="text-gray-600">Get expert legal advice at no cost. We'll evaluate your case for free.</p>
+
+            <div className="mt-8 flex flex-wrap gap-2">
+              <span className="rounded-md border border-white/30 bg-black/30 px-3 py-1 text-xs font-medium text-white">Free Consultation</span>
+              <span className="rounded-md border border-white/30 bg-black/30 px-3 py-1 text-xs font-medium text-white">No Fee Unless We Win</span>
+              <span className="rounded-md border border-white/30 bg-black/30 px-3 py-1 text-xs font-medium text-white">We’ll Come To You</span>
+              <span className="rounded-md border border-white/30 bg-black/30 px-3 py-1 text-xs font-medium text-white">California Focus</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <img 
-                src="https://images.unsplash.com/photo-1658249682516-c7789d418978?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MjY5NzB8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBsYXd5ZXIlMjBhdHRvcm5leSUyMGJ1c2luZXNzJTIwc3VpdHxlbnwwfHx8fDE3NTQ1OTM3MTF8MA&ixlib=rb-4.1.0&q=80&w=400"
-                alt="Professional attorney"
-                className="rounded-lg shadow-lg w-full"
+      {/* Why Choose Us */}
+      <section className="mx-auto max-w-7xl px-6 py-16">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-3xl font-bold tracking-tight">Why Choose The Law Brothers</h2>
+          <p className="mt-4 text-gray-700">
+            We help not‑at‑fault accident victims across California stand up to insurance companies and pursue maximum recovery — with no upfront costs.
+          </p>
+        </div>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            {
+              title: "CA Accident Specialists",
+              body:
+                "Deep California focus across major cities. We know the fault-based system, comparative negligence, and local courts.",
+            },
+            {
+              title: "No Fee Unless We Win",
+              body:
+                "Contingency representation. Your evaluation is free; pay nothing upfront.",
+            },
+            {
+              title: "24/7 + We’ll Come To You",
+              body:
+                "We meet at your home, hospital, or virtually. When you need us, we’re there.",
+            },
+            {
+              title: "Insurance Handling",
+              body:
+                "We deal with adjusters, build the evidence, and protect your claim from day one.",
+            },
+            {
+              title: "Experts + Medical Network",
+              body:
+                "Access to accident reconstruction experts and a broad provider network to accelerate care.",
+            },
+            {
+              title: "Transparent Process",
+              body:
+                "Clear communication, status updates, and straightforward accounting.",
+            },
+          ].map((item) => (
+            <div key={item.title} className="rounded-lg border border-gray-200 p-6 shadow-sm">
+              <h3 className="text-lg font-semibold">{item.title}</h3>
+              <p className="mt-2 text-gray-700">{item.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Practice Areas */}
+      <section className="bg-gray-50">
+        <div className="mx-auto max-w-7xl px-6 py-16">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight">What We Do</h2>
+            <p className="mt-4 text-gray-700">Car, motorcycle, and truck accident representation for not‑at‑fault victims in California.</p>
+          </div>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                title: "Car Accidents",
+                img: "https://images.unsplash.com/photo-1558721860-a9a4db1fd4db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MjY5NzB8MHwxfHNlYXJjaHwzfHxjYXIlMjBhY2NpZGVudCUyMGxhd3llciUyMENhbGlmb3JuaWF8ZW58MHwwfHx8MTc1NDYwNDUzNXww&ixlib=rb-4.1.0&q=80&w=1080",
+                alt: "gray vehicle",
+              },
+              {
+                title: "Motorcycle Accidents",
+                img: "https://images.unsplash.com/photo-1502877338535-766e1452684a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MjY5NzB8MHwxfHNlYXJjaHwxfHxtb3RvcmN5Y2xlJTIwcm9hZHxlbnwwfDB8fHwxNzUyNjgyNDA5&ixlib=rb-4.1.0&q=80&w=1080",
+                alt: "motorcycle on highway",
+              },
+              {
+                title: "Truck Accidents",
+                img: "https://images.unsplash.com/photo-1611360022966-018bd7eba328?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MjY5NzB8MHwxfHNlYXJjaHwzfHxjYXIlMjBhY2NpZGVudCUyMGxhd3llciUyMENhbGlmb3JuaWF8ZW58MHwwfHx8MTc1NDYwNDUzNXww&ixlib=rb-4.1.0&q=85&w=1080",
+                alt: "black suv on road during daytime",
+              },
+            ].map((item) => (
+              <div key={item.title} className="group relative isolate overflow-hidden rounded-lg border border-gray-200 shadow-sm">
+                <div className="relative h-56 w-full">
+                  <Image
+                    src={item.img}
+                    alt={item.alt}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                  />
+                  <div className="absolute inset-0 bg-black/50" />
+                </div>
+                <div className="p-5">
+                  <h3 className="text-lg font-semibold">{item.title}</h3>
+                  <p className="mt-2 text-sm text-gray-700">
+                    Free evaluation. We handle evidence, insurers, and litigation when needed.
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <a href="#free-eval" className="inline-block rounded-md bg-black px-5 py-3 text-sm font-semibold text-white hover:bg-black/90 focus:outline-none focus:ring-2 focus:ring-black/20">
+              Start Your Free Case Review
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Meet the Team */}
+      <section className="mx-auto max-w-7xl px-6 py-16">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-3xl font-bold tracking-tight">Meet The Law Brothers</h2>
+          <p className="mt-4 text-gray-700">
+            Founded by brothers Shawn Lalezary and Shervin Lalezary, our team brings 15+ years of California accident experience backed by nationwide resources.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          {[
+            {
+              name: "Shawn Lalezary",
+              role: "Founding Attorney",
+              copy:
+                "Shawn focuses on motor vehicle litigation and complex negotiations with insurers. He emphasizes clear communication and client accessibility.",
+            },
+            {
+              name: "Shervin Lalezary",
+              role: "Founding Attorney",
+              copy:
+                "Shervin leads trial strategy and case development, ensuring every claim is trial‑ready with strong evidence and expert support.",
+            },
+          ].map((p) => (
+            <div key={p.name} className="rounded-lg border border-gray-200 p-6 shadow-sm">
+              <h3 className="text-lg font-semibold">{p.name}</h3>
+              <p className="text-sm text-gray-600">{p.role}</p>
+              <p className="mt-3 text-gray-700">{p.copy}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section className="bg-gray-50">
+        <div className="mx-auto max-w-7xl px-6 py-16">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight">How It Works</h2>
+            <p className="mt-4 text-gray-700">
+              A simple, transparent process tailored for California accident claims.
+            </p>
+          </div>
+          <ol className="mt-10 grid gap-6 md:grid-cols-4">
+            {[
+              {
+                step: "1",
+                title: "Free Evaluation",
+                text:
+                  "Tell us what happened. We assess your claim and outline next steps—no obligation.",
+              },
+              {
+                step: "2",
+                title: "We Investigate",
+                text:
+                  "We gather evidence, work with experts, and protect your rights from day one.",
+              },
+              {
+                step: "3",
+                title: "We Handle Insurers",
+                text:
+                  "We manage adjusters and negotiations so you can focus on recovery.",
+              },
+              {
+                step: "4",
+                title: "No Fee Unless We Win",
+                text:
+                  "If there’s no recovery, you owe no attorney’s fees. Simple.",
+              },
+            ].map((s) => (
+              <li key={s.title} className="rounded-lg border border-gray-200 p-6 shadow-sm">
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-black text-sm font-bold text-white">
+                    {s.step}
+                  </span>
+                  <h3 className="text-lg font-semibold">{s.title}</h3>
+                </div>
+                <p className="mt-3 text-gray-700">{s.text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* What to Expect / CA Context */}
+      <section className="mx-auto max-w-7xl px-6 py-16">
+        <div className="grid gap-10 lg:grid-cols-2">
+          <div>
+            <h2 className="text-3xl font-bold tracking-tight">What to Expect</h2>
+            <p className="mt-4 text-gray-700">
+              California follows a fault‑based system with comparative negligence. Evidence preservation matters—photos, witness info, vehicle data, and timely medical care can impact your recovery.
+            </p>
+            <ul className="mt-6 list-disc space-y-2 pl-5 text-gray-700">
+              <li>Typical timeline varies by injuries, liability disputes, and insurer responsiveness.</li>
+              <li>Most cases settle; trial remains an option if insurers are unreasonable.</li>
+              <li>Statute of limitations is generally two years from the date of injury in CA, but exceptions apply—consult us to confirm deadlines.</li>
+            </ul>
+            <p className="mt-4 text-sm text-gray-600">This information is educational only, not legal advice.</p>
+          </div>
+
+          {/* Secondary image with overlay */}
+          <div className="relative isolate overflow-hidden rounded-lg border border-gray-200">
+            <div className="relative h-72 w-full">
+              <Image
+                src="https://images.unsplash.com/photo-1579620268136-6ef7eccc8b43?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MjY5NzB8MHwxfHNlYXJjaHwzfHxjYXIlMjBhY2NpZGVudCUyMGxhd3llciUyMENhbGlmb3JuaWF8ZW58MHwwfHx8MTc1NDYwNDUzNXww&ixlib=rb-4.1.0&q=80&w=1080"
+                alt="shattered car window close-up"
+                fill
+                className="object-cover"
+                sizes="50vw"
               />
+              <div className="absolute inset-0 bg-black/40" />
             </div>
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">Meet the Law Brothers®</h2>
-              <p className="text-lg text-gray-700 mb-6">
-                Led by Shawn and Shervin Lalezary, the Law Brothers® represent the injured and have recovered more than $500 Million for their clients over the years. With offices throughout California, Texas, and the West Coast, we employ a team of skilled personal injury professionals.
+            <div className="p-6">
+              <h3 className="text-lg font-semibold">Preserve Evidence Early</h3>
+              <p className="mt-2 text-gray-700">
+                We help secure photos, surveillance, vehicle data, and medical documentation to strengthen your claim.
               </p>
-              <p className="text-lg text-gray-700 mb-8">
-                What sets us apart is our passion for client service. We treat our clients like family, and no expense is spared in helping our clients maximize the value of their case. We're not afraid to take a case to trial when it's in the best interest of our clients.
-              </p>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex items-center">
-                  <CheckCircle className="w-6 h-6 text-green-600 mr-3" />
-                  <span className="text-gray-700">$500M+ Recovered</span>
-                </div>
-                <div className="flex items-center">
-                  <CheckCircle className="w-6 h-6 text-green-600 mr-3" />
-                  <span className="text-gray-700">Experienced Team</span>
-                </div>
-                <div className="flex items-center">
-                  <CheckCircle className="w-6 h-6 text-green-600 mr-3" />
-                  <span className="text-gray-700">Personal Service</span>
-                </div>
-                <div className="flex items-center">
-                  <CheckCircle className="w-6 h-6 text-green-600 mr-3" />
-                  <span className="text-gray-700">Trial Ready</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Car Accident Injury Services</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We handle all types of motor vehicle accidents and help you get the compensation you deserve.
+      {/* Locations */}
+      <section className="bg-gray-50">
+        <div className="mx-auto max-w-7xl px-6 py-16">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight">Serving Clients Across California</h2>
+            <p className="mt-4 text-gray-700">
+              Local support with statewide reach.
             </p>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <div className="w-12 h-12 bg-red-600 text-white rounded-lg flex items-center justify-center mb-4">
-                <Car className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Car Accidents</h3>
-              <p className="text-gray-600">Comprehensive legal representation for all types of car accidents, from minor fender benders to serious collisions.</p>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <div className="w-12 h-12 bg-blue-600 text-white rounded-lg flex items-center justify-center mb-4">
-                <Car className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Truck Accidents</h3>
-              <p className="text-gray-600">Specialized handling of commercial truck accidents with complex liability and insurance issues.</p>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <div className="w-12 h-12 bg-green-600 text-white rounded-lg flex items-center justify-center mb-4">
-                <Car className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Motorcycle Accidents</h3>
-              <p className="text-gray-600">Expert representation for motorcycle accident victims facing severe injuries and biased insurance companies.</p>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <div className="w-12 h-12 bg-purple-600 text-white rounded-lg flex items-center justify-center mb-4">
-                <Users className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Pedestrian Accidents</h3>
-              <p className="text-gray-600">Protecting the rights of pedestrians injured by negligent drivers and unsafe road conditions.</p>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <div className="w-12 h-12 bg-orange-600 text-white rounded-lg flex items-center justify-center mb-4">
-                <Car className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Uber/Lyft Accidents</h3>
-              <p className="text-gray-600">Complex rideshare accident cases involving multiple insurance policies and liability issues.</p>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-lg">
-              <div className="w-12 h-12 bg-red-700 text-white rounded-lg flex items-center justify-center mb-4">
-                <Shield className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold mb-3">Wrongful Death</h3>
-              <p className="text-gray-600">Compassionate legal support for families who have lost loved ones in motor vehicle accidents.</p>
-            </div>
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {[
+              { name: "Los Angeles", href: "/locations/los-angeles-car-accident-lawyer" },
+              { name: "Orange County", href: "/locations/orange-county-car-accident-lawyer" },
+              { name: "San Bernardino", href: "/locations/san-bernardino-car-accident-lawyer" },
+              { name: "Riverside", href: "/locations/riverside-car-accident-lawyer" },
+              { name: "San Diego", href: "/locations/san-diego-car-accident-lawyer" },
+              { name: "Sacramento", href: "/locations/sacramento-car-accident-lawyer" },
+              { name: "San Francisco", href: "/locations/san-francisco-car-accident-lawyer" },
+              { name: "More CA Cities", href: "/locations" },
+            ].map((c) => (
+              <Link
+                key={c.name}
+                href={c.href}
+                className="rounded-md border border-gray-200 bg-white px-4 py-3 text-center text-sm font-medium text-black hover:bg-gray-50"
+              >
+                {c.name}
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section id="testimonials" className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
-            <p className="text-xl text-gray-600">Real testimonials from real clients who got real results.</p>
+      <section className="mx-auto max-w-7xl px-6 py-16">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-3xl font-bold tracking-tight">What Clients Say</h2>
+          <p className="mt-4 text-gray-700">Real feedback from California accident victims we’ve helped.</p>
+        </div>
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {[
+            {
+              quote:
+                "They took over everything with the insurance company so I could focus on my recovery. Clear updates, no surprises.",
+              name: "A.M., Los Angeles",
+            },
+            {
+              quote:
+                "Responsive and professional. The team explained each step and made sure I got the care I needed.",
+              name: "J.R., San Diego",
+            },
+            {
+              quote:
+                "No upfront fees and they came to me at the hospital. I felt supported the whole time.",
+              name: "L.K., Riverside",
+            },
+          ].map((t, i) => (
+            <figure key={i} className="rounded-lg border border-gray-200 p-6 shadow-sm">
+              <blockquote className="text-gray-900">“{t.quote}”</blockquote>
+              <figcaption className="mt-3 text-sm text-gray-600">— {t.name}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-gray-50">
+        <div className="mx-auto max-w-7xl px-6 py-16">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-3xl font-bold tracking-tight">FAQ — California Accidents</h2>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <div className="flex items-center mb-4">
-                {[1,2,3,4,5].map((star) => (
-                  <Star key={star} className="w-5 h-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <p className="text-gray-700 mb-4">
-                "I had gotten into an accident and had no idea what to do. This firm went above and beyond and continued to follow up with me. I highly recommend them."
-              </p>
-              <p className="font-semibold text-gray-900">- Jacqueline D.</p>
-            </div>
-
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <div className="flex items-center mb-4">
-                {[1,2,3,4,5].map((star) => (
-                  <Star key={star} className="w-5 h-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <p className="text-gray-700 mb-4">
-                "The team was amazing! They were able to get a settlement that replaced my motorcycle and found me physical therapy. They were always responsive to my calls."
-              </p>
-              <p className="font-semibold text-gray-900">- Charles Mortensen</p>
-            </div>
-
-            <div className="bg-gray-50 p-6 rounded-lg">
-              <div className="flex items-center mb-4">
-                {[1,2,3,4,5].map((star) => (
-                  <Star key={star} className="w-5 h-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <p className="text-gray-700 mb-4">
-                "This law firm is a team of miracle workers! My case manager kept me updated consistently. I felt trust and integrity throughout my case."
-              </p>
-              <p className="font-semibold text-gray-900">- Jason Avelar</p>
-            </div>
+          <div className="mx-auto mt-8 max-w-3xl divide-y divide-gray-200 rounded-lg border border-gray-200 bg-white">
+            {[
+              {
+                q: "Do I pay anything if you don’t win?",
+                a: "No. Our contingency fee applies only if we recover for you. Your evaluation is free.",
+              },
+              {
+                q: "Is California a no‑fault state?",
+                a: "No. California is fault‑based with comparative negligence, which can reduce recovery by your percentage of fault.",
+              },
+              {
+                q: "How long do I have to file?",
+                a: "Generally two years from the date of injury in CA, with exceptions. Contact us promptly to protect your rights.",
+              },
+              {
+                q: "Will my case settle or go to trial?",
+                a: "Many cases settle, but we prepare every case for trial to maximize leverage and results.",
+              },
+              {
+                q: "Do you offer Spanish‑language help?",
+                a: "Yes. Se habla español. Let us know your preferred language.",
+              },
+              {
+                q: "What’s the contingency fee?",
+                a: "Contingency percentages vary by case and stage. We’ll explain all terms in a written fee agreement before you sign.",
+              },
+            ].map((item) => (
+              <details key={item.q} className="group p-5 open:bg-gray-50">
+                <summary className="cursor-pointer list-none text-base font-semibold">
+                  {item.q}
+                </summary>
+                <p className="mt-2 text-gray-700">{item.a}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Form */}
-      <section id="contact" className="py-16 bg-red-600 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-4xl font-bold mb-6">Get Your Free Case Evaluation</h2>
-              <p className="text-xl mb-8">
-                Don't wait. The sooner you call, the sooner we can start fighting for your rights. 
-                Our consultation is completely free, and you won't pay unless we win your case.
-              </p>
-              
-              <div className="space-y-4">
-                <div className="flex items-center">
-                  <Phone className="w-6 h-6 mr-4" />
-                  <div>
-                    <p className="font-semibold">Call Us Now</p>
-                    <p className="text-lg">(800) 222-2222</p>
-                  </div>
-                </div>
-                <div className="flex items-center">
-                  <Clock className="w-6 h-6 mr-4" />
-                  <div>
-                    <p className="font-semibold">Available 24/7</p>
-                    <p>We're here whenever you need us</p>
-                  </div>
-                </div>
-                <div className="flex items-center">
-                  <Users className="w-6 h-6 mr-4" />
-                  <div>
-                    <p className="font-semibold">Hablamos Español</p>
-                    <p>Spanish-speaking attorneys available</p>
-                  </div>
-                </div>
-              </div>
+      {/* Contact / Lead Capture */}
+      <section id="free-eval" className="mx-auto max-w-7xl px-6 py-16">
+        <div className="grid gap-10 lg:grid-cols-2">
+          <div>
+            <h2 className="text-3xl font-bold tracking-tight">Free Case Evaluation</h2>
+            <p className="mt-4 text-gray-700">
+              Not at fault? Tell us about your accident. We’ll review your case and explain your options—free and with no obligation.
+            </p>
+            <ul className="mt-6 list-disc space-y-2 pl-5 text-gray-700">
+              <li>Available 24/7 — we’ll come to you anywhere in California</li>
+              <li>No upfront fees — you pay nothing unless we win</li>
+              <li>We handle insurers while you focus on getting better</li>
+            </ul>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a href="tel:+18005551234" className="rounded-md border border-black bg-white px-5 py-3 text-sm font-semibold text-black hover:bg-gray-50">
+                Call Now (24/7)
+              </a>
+              <a href="mailto:intake@example.com" className="rounded-md bg-black px-5 py-3 text-sm font-semibold text-white hover:bg-black/90">
+                Email Intake
+              </a>
             </div>
+            <p className="mt-4 text-xs text-gray-600">
+              By contacting us, you agree we may reach out about your case. This site is attorney advertising. Past results do not guarantee a similar outcome.
+            </p>
+          </div>
 
-            <div className="bg-white rounded-lg p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
-                      First Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      name="firstName"
-                      required
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
-                      Last Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      name="lastName"
-                      required
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500"
-                    />
-                  </div>
-                </div>
-
+          <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+            <form action="/api/lead" method="post" className="space-y-4">
+              <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                    Email *
+                  <label htmlFor="name" className="block text-sm font-medium">
+                    Full Name
                   </label>
                   <input
-                    type="email"
-                    id="email"
-                    name="email"
+                    id="name"
+                    name="name"
+                    type="text"
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500"
+                    className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-black"
+                    placeholder="Jane Doe"
                   />
                 </div>
-
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                    Phone Number *
+                  <label htmlFor="phone" className="block text-sm font-medium">
+                    Phone
                   </label>
                   <input
-                    type="tel"
                     id="phone"
                     name="phone"
+                    type="tel"
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500"
+                    className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-black"
+                    placeholder="(555) 555‑1234"
                   />
                 </div>
+              </div>
 
+              <div className="grid gap-4 sm:grid-cols-2">
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                    Tell us about your accident *
+                  <label htmlFor="email" className="block text-sm font-medium">
+                    Email
                   </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    required
-                    placeholder="Please describe what happened..."
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500"
-                  ></textarea>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-black"
+                    placeholder="you@example.com"
+                  />
                 </div>
+                <div>
+                  <label htmlFor="city" className="block text-sm font-medium">
+                    City (CA)
+                  </label>
+                  <input
+                    id="city"
+                    name="city"
+                    type="text"
+                    className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-black"
+                    placeholder="Los Angeles"
+                  />
+                </div>
+              </div>
 
-                <button
-                  type="submit"
-                  className="w-full bg-red-600 text-white px-6 py-3 rounded-md font-semibold hover:bg-red-700 transition-colors"
-                >
-                  Get My Free Case Review
-                </button>
+              <div>
+                <label htmlFor="details" className="block text-sm font-medium">
+                  Brief Details
+                </label>
+                <textarea
+                  id="details"
+                  name="details"
+                  rows={4}
+                  required
+                  className="mt-1 w-full rounded-md border border-gray-300 px-3 py-2 text-sm outline-none focus:border-black"
+                  placeholder="Date, location, how the crash happened, injuries, and insurance info."
+                />
+              </div>
 
-                <p className="text-sm text-gray-600 text-center">
-                  By submitting this form, you agree to our Terms of Service and Privacy Policy.
-                </p>
-              </form>
-            </div>
+              <div className="flex items-start gap-2">
+                <input id="consent" name="consent" type="checkbox" required className="mt-1" />
+                <label htmlFor="consent" className="text-xs text-gray-700">
+                  I agree to be contacted about my case. I understand this is not legal advice and no attorney‑client relationship is formed unless and until we both sign a written agreement.
+                </label>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full rounded-md bg-black px-5 py-3 text-sm font-semibold text-white hover:bg-black/90"
+                aria-label="Submit Free Case Review"
+              >
+                Get My Free Case Review
+              </button>
+            </form>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+      {/* Secondary visual row */}
+      <section className="mx-auto max-w-7xl px-6 pb-16">
+        <div className="grid gap-6 sm:grid-cols-3">
+          {[
+            {
+              src: "https://images.unsplash.com/photo-1645216755684-c946ce202427?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3MjY5NzB8MHwxfHNlYXJjaHw2fHxjYXIlMjBhY2NpZGVudCUyMGxhd3llciUyMENhbGlmb3JuaWF8ZW58MHwwfHx8MTc1NDYwNDUzNXww&ixlib=rb-4.1.0&q=85&w=1080",
+              alt: "a pile of old cars sitting next to each other",
+            },
+            {
+              src: "https://images.unsplash.com/photo-1558721860-a9a4db1fd4db?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MjY5NzB8MHwxfHNlYXJjaHwzfHxjYXIlMjBhY2NpZGVudCUyMGxhd3llciUyMENhbGlmb3JuaWF8ZW58MHwwfHx8MTc1NDYwNDUzNXww&ixlib=rb-4.1.0&q=80&w=1080",
+              alt: "gray vehicle",
+            },
+            {
+              src: "https://images.unsplash.com/photo-1611360022966-018bd7eba328?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3MjY5NzB8MHwxfHNlYXJjaHwzfHxjYXIlMjBhY2NpZGVudCUyMGxhd3llciUyMENhbGlmb3JuaWF8ZW58MHwwfHx8MTc1NDYwNDUzNXww&ixlib=rb-4.1.0&q=85&w=1080",
+              alt: "black suv on road during daytime",
+            },
+          ].map((img, i) => (
+            <div key={i} className="relative isolate overflow-hidden rounded-lg border border-gray-200">
+              <div className="relative h-48 w-full">
+                <Image src={img.src} alt={img.alt} fill className="object-cover" sizes="33vw" />
+                <div className="absolute inset-0 bg-black/30" />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Footer / Legal */}
+      <footer className="bg-black text-gray-200">
+        <div className="mx-auto max-w-7xl px-6 py-10">
+          <div className="grid gap-6 md:grid-cols-3">
             <div>
-              <h3 className="text-2xl font-bold mb-4">Law Brothers®</h3>
-              <p className="text-gray-400 mb-4">
-                Award-winning personal injury attorneys fighting for your rights.
+              <h3 className="text-sm font-semibold text-white">The Law Brothers</h3>
+              <p className="mt-3 text-sm text-gray-300">
+                California motor vehicle accident attorneys for not‑at‑fault victims. Free evaluation. No fee unless we win.
               </p>
-              <div className="flex items-center">
-                <Phone className="w-5 h-5 mr-2" />
-                <a href="tel:8002222222" className="text-red-400 hover:text-red-300">(800) 222-2222</a>
-              </div>
             </div>
-
             <div>
-              <h4 className="text-lg font-semibold mb-4">Services</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white">Car Accidents</a></li>
-                <li><a href="#" className="hover:text-white">Truck Accidents</a></li>
-                <li><a href="#" className="hover:text-white">Motorcycle Accidents</a></li>
-                <li><a href="#" className="hover:text-white">Wrongful Death</a></li>
+              <h3 className="text-sm font-semibold text-white">Contact</h3>
+              <ul className="mt-3 space-y-1 text-sm">
+                <li>
+                  <a href="tel:+18005551234" className="hover:underline">Call 24/7: (800) 555‑1234</a>
+                </li>
+                <li>
+                  <a href="mailto:intake@example.com" className="hover:underline">intake@example.com</a>
+                </li>
               </ul>
             </div>
-
             <div>
-              <h4 className="text-lg font-semibold mb-4">Locations</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>Los Angeles, CA</li>
-                <li>San Diego, CA</li>
-                <li>Houston, TX</li>
-                <li>Seattle, WA</li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
-              <div className="text-gray-400 space-y-2">
-                <p>Available 24/7</p>
-                <p>Hablamos Español</p>
-                <p>No Fee Unless You Win</p>
-                <p>Free Consultation</p>
-              </div>
+              <h3 className="text-sm font-semibold text-white">Legal</h3>
+              <p className="mt-3 text-xs text-gray-300">
+                Attorney advertising. Past results do not guarantee a similar outcome. No attorney‑client relationship is formed unless and until a written agreement is signed by both client and attorney. Fee structure is contingency‑based and fully described in the written fee agreement.
+              </p>
             </div>
           </div>
-
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2025 The Law Brothers® Firm. All Rights Reserved.</p>
-            <p className="mt-2">
-              <a href="#" className="hover:text-white mr-4">Privacy Policy</a>
-              <a href="#" className="hover:text-white mr-4">Terms of Service</a>
-              <a href="#" className="hover:text-white">Disclaimer</a>
-            </p>
+          <div className="mt-8 border-t border-white/10 pt-6 text-xs text-gray-400">
+            © {new Date().getFullYear()} The Law Brothers. All rights reserved.
           </div>
         </div>
       </footer>
-
-      {/* Sticky Call Button for Mobile */}
-      <div className="fixed bottom-4 right-4 md:hidden z-50">
-        <a 
-          href="tel:8002222222"
-          className="bg-red-600 text-white p-4 rounded-full shadow-lg hover:bg-red-700 transition-colors flex items-center"
-        >
-          <Phone className="w-6 h-6" />
-        </a>
-      </div>
-    </div>
-  )
+    </main>
+  );
 }
