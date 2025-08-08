@@ -36,7 +36,7 @@ export default function Page() {
             </p>
             <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl">
               California Car Accident Lawyers
-              <span className="block text-gray-200">No Fees Unless We Win!</span>
+              <span className="block text-gray-200">No Fees Unless We Win!!!!</span>
             </h1>
             <p className="mt-5 max-w-2xl text-lg text-gray-100">
               Not at fault in a car, truck, or motorcycle crash? Get a free, no‑obligation case evaluation. We’re available 24/7 and we’ll come to you anywhere in California.
